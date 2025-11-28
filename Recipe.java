@@ -1,5 +1,6 @@
-import java.util.Set;
+import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Write a description of class Recipe here.
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 public class Recipe
 {
     // instance variables - replace the example below with your own
-    private Set<Ingredient,> ingredients;
+    private HashMap<Ingredient, Integer> ingredients;
     private ArrayList<String> instruction;
     private int portions;
     private String contents;
@@ -24,9 +25,9 @@ public class Recipe
         
     }
     
-    public void addIngredient(Ingredient i)
+    public void addIngredient(Ingredient i, Integer quantity)
     {
-        ingredients.add(i);
+        ingredients.put(i, quantity);
     }
     public void addInstrution(String instruction)
     {
@@ -48,9 +49,15 @@ public class Recipe
         this.instruction.set(stepNum,instruction);
     }
     
-    public void getIngredient(Ingredient i)
+    public Ingredient getIngredient(Ingredient i)
     {
-        ingredients.add(i);
+        Set<Ingredient> key = ingredients.keySet();
+        for (Ingredient ingredient : key){
+            if (i.equals(ingredient)){
+                return i;
+            }
+        }
+        return null;
     }
     public void getInstrution(String instruction)
     {

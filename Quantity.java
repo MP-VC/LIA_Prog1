@@ -7,5 +7,7 @@
  */
 public enum Quantity
 {
-    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+    UNIT,
+    MILLILITER,
+    GRAM
 }
