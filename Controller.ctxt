@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Controller
+comment0.text=\r\n\ This\ is\ what\ the\ user\ interacts\ with.\r\n\r\n\ @author\ R3dJ4y55\r\n\ @author\ MP-VC\r\n\ @version\ 0\r\n
+comment1.params=
+comment1.target=Controller()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Controller\r\n
+comment2.params=name\ author
+comment2.target=void\ newBook(java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ Creates\ a\ new\ recipe\ book.\r\n\ \r\n\ @param\ name\ The\ name\ of\ the\ book\r\n\ @param\ author\ The\ author's\ name\r\n
+comment3.params=book
+comment3.target=Book\ getBook(java.lang.String)
+comment3.text=\r\n\ Returns\ a\ book\ by\ name.\r\n\ \r\n\ @param\ book\ The\ name\ of\ the\ book.\r\n\ @return\ The\ book\ paired\ with\ the\ specified\ name\ in\ the\ books\ HashMap.\r\n
+numComments=4
