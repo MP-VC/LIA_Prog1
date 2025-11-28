@@ -15,6 +15,7 @@ public class Ingredient
     private HashMap<String,Integer> vitamins;
     private Set<Tag> tags;
     private String name;
+    public Quantity unit;
 
     /**
      * Constructor for objects of class Ingredients
