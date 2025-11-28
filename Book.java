@@ -14,7 +14,7 @@ public class Book
     /**
      * Constructor for objects of class Book
      */
-    public Book()
+    public Book(String author)
     {
        
     }
