@@ -11,7 +11,6 @@ public class Controller
 {
     // instance variables - replace the example below with your own
     private HashMap<String,Book> books;
-    private HashMap<Integer,Order> orders;
     /**
      * Constructor for objects of class Controller
      */
