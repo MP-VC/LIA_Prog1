@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Recipe
 {
     // instance variables - replace the example below with your own
-    private Set<Ingredient> ingredients;
+    private Set<Ingredient,> ingredients;
     private ArrayList<String> instruction;
     private int portions;
     private String contents;
