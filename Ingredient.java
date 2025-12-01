@@ -13,16 +13,21 @@ public class Ingredient
     private int sugar;
     private int protein;
     private HashMap<String,Integer> vitamins;
-    private Set<Tag> tags;
+    private Set<Tag> tag;
     private String name;
-    public Quantity unit;
+    public Unit unit;
 
     /**
      * Constructor for objects of class Ingredients
      */
-    public Ingredient(String name)
+    public Ingredient(String name,int sugar,int protein,HashMap<String,Integer> vitamins,Set<Tag> tag,Unit unit)
     {
         this.name = name;
+        this.sugar = sugar;
+        this.protein = protein;
+        this.vitamins = vitamins;
+        this.tag = tag;
+        this.unit = unit;
     }
     
     public void setSugar(int amount)
@@ -39,7 +44,7 @@ public class Ingredient
     }
     public void setTags(Tag tag)
     {
-        tags.add(tag);
+        this.tag.add(tag);
     }
     
     public int getSugar()
@@ -56,6 +61,6 @@ public class Ingredient
     }
     public Set getTags()
     {
-        return tags;
+        return tag;
     }
 }

@@ -5,7 +5,7 @@
  * @author (your name here)
  * @version (version number or date here)
  */
-public enum Quantity
+public enum Unit
 {
-    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+    ML,L,G,KG,CUP,TSP,TBSP,OZ,LB,GAL
 }

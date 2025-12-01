@@ -1,4 +1,5 @@
-
+import java.util.ArrayList;
+import java.util.HashMap;
 /**
  * Write a description of class FrozenRecipe here.
  *
@@ -8,26 +9,17 @@
 public class FrozenRecipe extends Recipe
 {
     // instance variables - replace the example below with your own
-    private int x;
-
+    private HashMap<Ingredient,Double> ingredient;
+    private ArrayList<String> instruction;
+    private double portion;
+    private String contents;
+    private ArrayList<Integer> rating;
+    
     /**
      * Constructor for objects of class FrozenRecipe
      */
-    public FrozenRecipe()
+    public FrozenRecipe(HashMap<Ingredient,Double> ingredient,ArrayList<String> instruction, double portion,ArrayList<Integer> rating)
     {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+        super(ingredient,instruction,portion,rating);
     }
 }

@@ -11,23 +11,27 @@ import java.util.HashMap;
 public class Recipe
 {
     // instance variables - replace the example below with your own
-    private HashMap<Ingredient,Integer> ingredients;
+    private HashMap<Ingredient,Double> ingredient;
     private ArrayList<String> instruction;
-    private int portions;
+    private double portion;
     private String contents;
     private ArrayList<Integer> rating;
 
     /**
      * Constructor for objects of class Recipe
      */
-    public Recipe()
+    public Recipe(HashMap<Ingredient,Double> ingredient,ArrayList<String> instruction, double portion,ArrayList<Integer> rating)
     {
-        
+        this.ingredient = ingredient;
+        this.instruction = instruction;
+        this.portion = portion;
+        this.contents = contents;
+        this.rating = rating;
     }
     
-    public void addIngredient(Ingredient i,int amount)
+    public void addIngredient(Ingredient i,double amount)
     {
-        ingredients.put(i,q);
+        ingredient.put(i,amount);
     }
     public void addInstrution(String instruction)
     {
@@ -40,30 +44,26 @@ public class Recipe
             this.rating.add(rating);
         }
     }
-    public void setNumberOfPortions(int nbOfPortion)
+    public void setNumberOfPortions(double nbOfPortion)
     {
-        portions = nbOfPortion;
+        portion = nbOfPortion;
     }
     public void modifyInstruction(int stepNum,String instruction)
     {
         this.instruction.set(stepNum,instruction);
     }
     
-    public void getIngredient(Ingredient i)
+       public String getInstrution(int instructionNB)
     {
-        ingredients.add(i);
+        return instruction.get(instructionNB);
     }
-    public void getInstrution(String instruction)
+    public int getRating(int i)
     {
-        this.instruction.add(instruction);
+        return this.rating.get(i);
     }
-    public void getRating(int rating)
+    public double getNumberOfPortions()
     {
-        this.rating.add(rating);
-    }
-    public void getNumberOfPortions(int nbOfPortiond)
-    {
-        portions = nbOfPortiond;
+        return portion;
     }
     
     public int averageRating()

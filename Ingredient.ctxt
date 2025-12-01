@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Ingredient
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Ingredients\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=name
-comment1.target=Ingredient(java.lang.String)
+comment1.params=name\ sugar\ protein\ vitamins\ tag\ unit
+comment1.target=Ingredient(java.lang.String,\ int,\ int,\ java.util.HashMap,\ java.util.Set,\ Unit)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Ingredients\r\n
 comment2.params=amount
 comment2.target=void\ setSugar(int)
