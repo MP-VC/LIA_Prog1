@@ -2,6 +2,7 @@ import java.util.HashMap;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.Collection;
 
 /**
  * Write a description of class Book here.
@@ -11,7 +12,7 @@ import java.util.Set;
  */
 public class Book
 {
-    private HashMap<String,Recipe> recipes;
+    private HashMap<String,Recipe> recipe;
     private String author;
     private Date dayPublished;
     /**
@@ -21,18 +22,18 @@ public class Book
     {
        this.author = author;
        dayPublished = new Date();
-       recipes = new HashMap<>();
+       recipe = new HashMap<>();
     }
     
     public HashMap<String, Recipe> getRecipes()
     {
-        return recipes;
+        return recipe;
     }
     
     public Recipe addRecipe(String name)
     {
         Recipe r = new Recipe();
-        recipes.put(name,r);
+        recipe.put(name,r);
         return r;
     }
        
@@ -43,10 +44,21 @@ public class Book
     }
     public void listAllRecipes()
     {
-        recipe.values();
+        Set<String> recipeName = recipe.keySet();
+        for(String food : recipeName)
+        {
+            System.out.println(food);
+        }
     }
-    public void addRecipe(String name,Recipe food)
+    public boolean filterByTag(String filter)
     {
-        recipe.put(name, food);
+        Collection<Recipe> filterCheck = recipe.values();
+        for(Recipe rec : filterCheck)
+        {
+            if(rec.getIngredient().contains(filter)){
+                return true;
+            }
+        }
+        return false;
     }
 }

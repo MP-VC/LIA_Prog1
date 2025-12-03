@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.Collection;
 
 /**
  * Write a description of class Recipe here.
@@ -22,7 +24,7 @@ public class Recipe
      */
     public Recipe()
     {
-       
+         ingredient = new HashMap<>();  
     }
     
     public void addIngredient(Ingredient i,double amount)
@@ -75,5 +77,9 @@ public class Recipe
     public void listAllIngredients()
     {
         ingredient.toString();
+    }
+    public Set getIngredient()
+    {
+        return ingredient.keySet();
     }
 }
