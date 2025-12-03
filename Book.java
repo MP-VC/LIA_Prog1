@@ -11,8 +11,7 @@ import java.util.Set;
  */
 public class Book
 {
-    // instance variables - replace the example below with your own
-    private HashMap<String,Recipe> recipe;
+    private HashMap<String,Recipe> recipes;
     private String author;
     private Date dayPublished;
     /**
@@ -20,14 +19,21 @@ public class Book
      */
     public Book(String author)
     {
-       
+       this.author = author;
+       recipes = new HashMap<>();
     }
     
-    //public void addRecipe(String name)
-    //{
-    //  Recipe r = new Recipe(ingredient,instruction,portion,rating);
-    //  recipe.put(name,r);
-    //}
+    public HashMap<String, Recipe> getRecipes()
+    {
+        return recipes;
+    }
+    
+    public Recipe addRecipe(String name)
+    {
+        Recipe r = new Recipe();
+        recipes.put(name,r);
+        return r;
+    }
     //public void defaultRecipe()
     //{
     //    ArrayList<Integer> rat1 = new ArrayList<>();

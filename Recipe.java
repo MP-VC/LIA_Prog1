@@ -20,13 +20,9 @@ public class Recipe
     /**
      * Constructor for objects of class Recipe
      */
-    public Recipe(HashMap<Ingredient,Double> ingredient,ArrayList<String> instruction, double portion,ArrayList<Integer> rating)
+    public Recipe()
     {
-        this.ingredient = ingredient;
-        this.instruction = instruction;
-        this.portion = portion;
-        this.contents = contents;
-        this.rating = rating;
+       
     }
     
     public void addIngredient(Ingredient i,double amount)

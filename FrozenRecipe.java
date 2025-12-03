@@ -18,8 +18,7 @@ public class FrozenRecipe extends Recipe
     /**
      * Constructor for objects of class FrozenRecipe
      */
-    public FrozenRecipe(HashMap<Ingredient,Double> ingredient,ArrayList<String> instruction, double portion,ArrayList<Integer> rating)
+    public FrozenRecipe()
     {
-        super(ingredient,instruction,portion,rating);
     }
 }

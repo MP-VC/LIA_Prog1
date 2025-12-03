@@ -9,14 +9,14 @@ import java.util.HashMap;
  */
 public class Controller
 {
-    // instance variables - replace the example below with your own
     private HashMap<String,Book> books;
+    private Book currentBook;
     /**
      * Constructor for objects of class Controller
      */
     public Controller()
     {
-        
+       books = new HashMap<>(); 
     }
     
     /**
@@ -26,8 +26,8 @@ public class Controller
      * @param author The author's name
      */
     public void newBook(String name, String author){
-        Book b = new Book(author);
-        books.put(name, b);
+        Book b = new Book(author.toLowerCase());
+        books.put(name.toLowerCase(), b);
     }
     
     /**
@@ -38,7 +38,21 @@ public class Controller
      */
     public Book getBook(String book)
     {
+        book = book.toLowerCase();
         Book b = books.get(book);
         return b;
+    }
+    
+    public Book selectBook(String bookName)
+    {
+        bookName = bookName.toLowerCase();
+        currentBook = books.get(bookName);
+        return currentBook;
+    }
+    
+    public Recipe newRecipe(String name)
+    {
+        name = name.toLowerCase();
+        return currentBook.addRecipe(name);
     }
 }

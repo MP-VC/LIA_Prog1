@@ -18,8 +18,7 @@ public class BakedRecipe extends Recipe
     /**
      * Constructor for objects of class BakedRecipe
      */
-    public BakedRecipe(HashMap<Ingredient,Double> ingredient,ArrayList<String> instruction, double portion,ArrayList<Integer> rating)
+    public BakedRecipe()
     {
-        super(ingredient,instruction,portion,rating);
     }
 }
