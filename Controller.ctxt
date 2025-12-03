@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Controller
-comment0.text=\r\n\ This\ is\ what\ the\ user\ interacts\ with.\r\n\r\n\ @author\ R3dJ4y55\r\n\ @author\ MP-VC\r\n\ @version\ 0\r\n
+comment0.text=\r\n\ This\ is\ what\ the\ user\ interacts\ with.\r\n\r\n\ @author\ R3dJ4y55\r\n\ @author\ MP-VC\r\n\ @version\ 1\r\n
 comment1.params=
 comment1.target=Controller()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Controller\r\n
@@ -10,4 +10,16 @@ comment2.text=\r\n\ Creates\ a\ new\ recipe\ book.\r\n\ \r\n\ @param\ name\ The\
 comment3.params=book
 comment3.target=Book\ getBook(java.lang.String)
 comment3.text=\r\n\ Returns\ a\ book\ by\ name.\r\n\ \r\n\ @param\ book\ The\ name\ of\ the\ book.\r\n\ @return\ The\ book\ paired\ with\ the\ specified\ name\ in\ the\ books\ HashMap.\r\n
+<<<<<<< Updated upstream
 numComments=4
+=======
+comment4.params=bookName
+comment4.target=Book\ selectBook(java.lang.String)
+comment4.text=\r\n\ Sets\ the\ specified\ book\ to\ the\ one\ the\ user\ is\ reading.\r\n\ This\ allows\ us\ not\ to\ have\ the\ users\ specify\ the\ book\ every\ time.\r\n\ \r\n\ @param\ bookName\ The\ name\ of\ the\ book.\ The\ key\ for\ the\ books\ HashMap.\r\n
+comment5.params=recipeName
+comment5.target=Recipe\ selectRecipe(java.lang.String)
+comment6.params=name
+comment6.target=Recipe\ newRecipe(java.lang.String)
+comment6.text=\r\n\ Calls\ addRecipe\ in\ the\ Book\ class.\r\n\ \r\n\ @param\ name\ The\ name\ of\ the\ recipe.\ Used\ as\ the\ key\ in\ the\ Book.recipes\ HashMap.\r\n
+numComments=7
+>>>>>>> Stashed changes

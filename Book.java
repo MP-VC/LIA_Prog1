@@ -7,8 +7,9 @@ import java.util.Collection;
 /**
  * Write a description of class Book here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author R3dJ4y55
+ * @author MP-VC
+ * @version 1
  */
 public class Book
 {
@@ -44,6 +45,7 @@ public class Book
     }
     public void listAllRecipes()
     {
+<<<<<<< Updated upstream
         Set<String> recipeName = recipe.keySet();
         for(String food : recipeName)
         {
@@ -60,5 +62,13 @@ public class Book
             }
         }
         return false;
+=======
+        recipes.values();
+    }
+    public Recipe getRecipe(String name)
+    {
+        name = name.toLowerCase();
+        return recipes.get(name);
+>>>>>>> Stashed changes
     }
 }

@@ -5,12 +5,15 @@ import java.util.HashMap;
  *
  * @author R3dJ4y55
  * @author MP-VC
- * @version 0
+ * @version 1
  */
 public class Controller
 {
     private HashMap<String,Book> books;
+    
     private Book currentBook;
+    private Recipe currentRecipe;
+    private Ingredient currentIngredient;
     /**
      * Constructor for objects of class Controller
      */
@@ -43,6 +46,12 @@ public class Controller
         return b;
     }
     
+    /**
+     * Sets the specified book to the one the user is reading.
+     * This allows us not to have the users specify the book every time.
+     * 
+     * @param bookName The name of the book. The key for the books HashMap.
+     */
     public Book selectBook(String bookName)
     {
         bookName = bookName.toLowerCase();
@@ -50,6 +59,18 @@ public class Controller
         return currentBook;
     }
     
+    public Recipe selectRecipe(String recipeName)
+    {
+        recipeName = recipeName.toLowerCase();
+        currentRecipe = currentBook.getRecipe(recipeName);
+        return currentRecipe;
+    }
+    
+    /**
+     * Calls addRecipe in the Book class.
+     * 
+     * @param name The name of the recipe. Used as the key in the Book.recipes HashMap.
+     */
     public Recipe newRecipe(String name)
     {
         name = name.toLowerCase();

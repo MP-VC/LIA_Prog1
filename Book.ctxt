@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Book
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Book\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Book\ here.\r\n\r\n\ @author\ R3dJ4y55\r\n\ @author\ MP-VC\r\n\ @version\ 1\r\n
 comment1.params=author
 comment1.target=Book(java.lang.String)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Book\r\n
@@ -12,6 +12,11 @@ comment4.params=
 comment4.target=void\ printBookDetails()
 comment5.params=
 comment5.target=void\ listAllRecipes()
+<<<<<<< Updated upstream
 comment6.params=filter
 comment6.target=boolean\ filterByTag(java.lang.String)
+=======
+comment6.params=name
+comment6.target=Recipe\ getRecipe(java.lang.String)
+>>>>>>> Stashed changes
 numComments=7
