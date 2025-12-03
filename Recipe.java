@@ -53,7 +53,7 @@ public class Recipe
         this.instruction.set(stepNum,instruction);
     }
     
-       public String getInstrution(int instructionNB)
+    public String getInstrution(int instructionNB)
     {
         return instruction.get(instructionNB);
     }
@@ -66,10 +66,18 @@ public class Recipe
         return portion;
     }
     
-    public int averageRating()
+    public double getAverageRating()
     {
-        int sum = 0;
+        double sum = 0;
         //loop through the ratings ArrayList adding the integers to a sum, then divide by the lenght
-        return sum;
+        for(int star : rating)
+        {
+            sum = sum + star;
+        }
+        return sum/(double)rating.size();
+    }
+    public void listAllIngredients()
+    {
+        ingredient.toString();
     }
 }
