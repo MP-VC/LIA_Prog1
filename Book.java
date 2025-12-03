@@ -20,6 +20,7 @@ public class Book
     public Book(String author)
     {
        this.author = author;
+       dayPublished = new Date();
        recipes = new HashMap<>();
     }
     
@@ -34,19 +35,18 @@ public class Book
         recipes.put(name,r);
         return r;
     }
-    //public void defaultRecipe()
-    //{
-    //    ArrayList<Integer> rat1 = new ArrayList<>();
-    //    int por1 = 1;
-     //   ArrayList<String> ins1 = new ArrayList<>();
-    //    String name ="One day blinding soup";
-    //    int sugar = 1000;
-    //    int protein = 0;
-    //    HashMap<String,Integer> vitamins = new HashMap<>();
-    //    Set<Tag> tag;
-    //    Unit unit;
-    //    Ingredient ingredient = new Ingredient(name, sugar, protein, vitamins,tag,unit);
-    //    HashMap<Ingredient,Double> ing1 = new HashMap<>();
-    //    Recipe r = new Recipe(ing1,ins1,por1,rat1);
-    //}
+       
+    public void printBookDetails()
+    {
+        System.out.println("Author: " + author);
+        System.out.println("Publish date: " + dayPublished);
+    }
+    public void listAllRecipes()
+    {
+        recipe.values();
+    }
+    public void addRecipe(String name,Recipe food)
+    {
+        recipe.put(name, food);
+    }
 }

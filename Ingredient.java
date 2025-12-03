@@ -20,14 +20,9 @@ public class Ingredient
     /**
      * Constructor for objects of class Ingredients
      */
-    public Ingredient(String name,int sugar,int protein,HashMap<String,Integer> vitamins,Set<Tag> tag,Unit unit)
+    public Ingredient(String name)
     {
         this.name = name;
-        this.sugar = sugar;
-        this.protein = protein;
-        this.vitamins = vitamins;
-        this.tag = tag;
-        this.unit = unit;
     }
     
     public void setSugar(int amount)
