@@ -10,16 +10,19 @@ comment2.text=\r\n\ Creates\ a\ new\ recipe\ book.\r\n\ \r\n\ @param\ name\ The\
 comment3.params=book
 comment3.target=Book\ getBook(java.lang.String)
 comment3.text=\r\n\ Returns\ a\ book\ by\ name.\r\n\ \r\n\ @param\ book\ The\ name\ of\ the\ book.\r\n\ @return\ The\ book\ paired\ with\ the\ specified\ name\ in\ the\ books\ HashMap.\r\n
-<<<<<<< Updated upstream
-numComments=4
-=======
-comment4.params=bookName
-comment4.target=Book\ selectBook(java.lang.String)
-comment4.text=\r\n\ Sets\ the\ specified\ book\ to\ the\ one\ the\ user\ is\ reading.\r\n\ This\ allows\ us\ not\ to\ have\ the\ users\ specify\ the\ book\ every\ time.\r\n\ \r\n\ @param\ bookName\ The\ name\ of\ the\ book.\ The\ key\ for\ the\ books\ HashMap.\r\n
-comment5.params=recipeName
-comment5.target=Recipe\ selectRecipe(java.lang.String)
-comment6.params=name
-comment6.target=Recipe\ newRecipe(java.lang.String)
-comment6.text=\r\n\ Calls\ addRecipe\ in\ the\ Book\ class.\r\n\ \r\n\ @param\ name\ The\ name\ of\ the\ recipe.\ Used\ as\ the\ key\ in\ the\ Book.recipes\ HashMap.\r\n
-numComments=7
->>>>>>> Stashed changes
+comment4.params=
+comment4.target=java.util.HashMap\ getBooks()
+comment4.text=\r\n\ @return\ Returns\ the\ books\ HashMap.\ Which\ contains\ all\ books.\r\n
+comment5.params=bookName
+comment5.target=Book\ selectBook(java.lang.String)
+comment5.text=\r\n\ Sets\ the\ specified\ book\ to\ the\ one\ the\ user\ is\ reading.\r\n\ This\ allows\ us\ not\ to\ have\ the\ users\ specify\ the\ book\ every\ time.\r\n\ \r\n\ @param\ bookName\ The\ name\ of\ the\ book.\ The\ key\ for\ the\ books\ HashMap.\r\n
+comment6.params=
+comment6.target=Book\ getCurrentBook()
+comment7.params=recipeName
+comment7.target=Recipe\ selectRecipe(java.lang.String)
+comment8.params=
+comment8.target=Recipe\ getCurrentRecipe()
+comment9.params=name
+comment9.target=Recipe\ newRecipe(java.lang.String)
+comment9.text=\r\n\ Calls\ addRecipe\ in\ the\ Book\ class.\r\n\ \r\n\ @param\ name\ The\ name\ of\ the\ recipe.\ Used\ as\ the\ key\ in\ the\ Book.recipes\ HashMap.\r\n\ @return\ Returns\ the\ new\ recipe.\ Returns\ null\ if\ no\ book\ has\ been\ selected.\r\n
+numComments=10

@@ -20,6 +20,7 @@ public class Controller
     public Controller()
     {
        books = new HashMap<>(); 
+       currentBook = null;
     }
     
     /**
@@ -47,6 +48,14 @@ public class Controller
     }
     
     /**
+     * @return Returns the books HashMap. Which contains all books.
+     */
+    public HashMap<String, Book> getBooks()
+    {
+        return books;
+    }
+    
+    /**
      * Sets the specified book to the one the user is reading.
      * This allows us not to have the users specify the book every time.
      * 
@@ -58,11 +67,23 @@ public class Controller
         currentBook = books.get(bookName);
         return currentBook;
     }
+    public Book getCurrentBook()
+    {
+        return currentBook;
+    }
     
     public Recipe selectRecipe(String recipeName)
     {
-        recipeName = recipeName.toLowerCase();
-        currentRecipe = currentBook.getRecipe(recipeName);
+        if (currentBook != null){
+            recipeName = recipeName.toLowerCase();
+            currentRecipe = currentBook.getRecipe(recipeName);
+            return currentRecipe;
+        }
+        System.out.println("Please select a book.");
+        return null;
+    }
+    public Recipe getCurrentRecipe()
+    {
         return currentRecipe;
     }
     
@@ -70,10 +91,15 @@ public class Controller
      * Calls addRecipe in the Book class.
      * 
      * @param name The name of the recipe. Used as the key in the Book.recipes HashMap.
+     * @return Returns the new recipe. Returns null if no book has been selected.
      */
     public Recipe newRecipe(String name)
     {
-        name = name.toLowerCase();
-        return currentBook.addRecipe(name);
+        if(currentBook != null){
+            name = name.toLowerCase();
+            return currentBook.addRecipe(name);
+        }
+        System.out.println("Please select a book.");
+        return null;
     }
 }

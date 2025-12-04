@@ -12,11 +12,8 @@ comment4.params=
 comment4.target=void\ printBookDetails()
 comment5.params=
 comment5.target=void\ listAllRecipes()
-<<<<<<< Updated upstream
 comment6.params=filter
 comment6.target=boolean\ filterByTag(java.lang.String)
-=======
-comment6.params=name
-comment6.target=Recipe\ getRecipe(java.lang.String)
->>>>>>> Stashed changes
-numComments=7
+comment7.params=name
+comment7.target=Recipe\ getRecipe(java.lang.String)
+numComments=8

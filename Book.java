@@ -13,7 +13,7 @@ import java.util.Collection;
  */
 public class Book
 {
-    private HashMap<String,Recipe> recipe;
+    private HashMap<String,Recipe> recipes;
     private String author;
     private Date dayPublished;
     /**
@@ -23,18 +23,18 @@ public class Book
     {
        this.author = author;
        dayPublished = new Date();
-       recipe = new HashMap<>();
+       recipes = new HashMap<>();
     }
     
     public HashMap<String, Recipe> getRecipes()
     {
-        return recipe;
+        return recipes;
     }
     
     public Recipe addRecipe(String name)
     {
         Recipe r = new Recipe();
-        recipe.put(name,r);
+        recipes.put(name,r);
         return r;
     }
        
@@ -45,8 +45,7 @@ public class Book
     }
     public void listAllRecipes()
     {
-<<<<<<< Updated upstream
-        Set<String> recipeName = recipe.keySet();
+        Set<String> recipeName = recipes.keySet();
         for(String food : recipeName)
         {
             System.out.println(food);
@@ -54,7 +53,7 @@ public class Book
     }
     public boolean filterByTag(String filter)
     {
-        Collection<Recipe> filterCheck = recipe.values();
+        Collection<Recipe> filterCheck = recipes.values();
         for(Recipe rec : filterCheck)
         {
             if(rec.getIngredient().contains(filter)){
@@ -62,13 +61,10 @@ public class Book
             }
         }
         return false;
-=======
-        recipes.values();
     }
     public Recipe getRecipe(String name)
     {
         name = name.toLowerCase();
         return recipes.get(name);
->>>>>>> Stashed changes
     }
 }

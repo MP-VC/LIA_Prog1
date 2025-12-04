@@ -8,11 +8,8 @@ comment10.params=
 comment10.target=double\ getAverageRating()
 comment11.params=
 comment11.target=void\ listAllIngredients()
-<<<<<<< Updated upstream
 comment12.params=
 comment12.target=java.util.Set\ getIngredient()
-=======
->>>>>>> Stashed changes
 comment2.params=i\ amount
 comment2.target=void\ addIngredient(Ingredient,\ double)
 comment3.params=instruction
@@ -29,8 +26,4 @@ comment8.params=i
 comment8.target=int\ getRating(int)
 comment9.params=
 comment9.target=double\ getNumberOfPortions()
-<<<<<<< Updated upstream
 numComments=13
-=======
-numComments=12
->>>>>>> Stashed changes
