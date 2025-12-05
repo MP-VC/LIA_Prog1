@@ -13,24 +13,25 @@ import java.util.Collection;
 public class Recipe
 {
     // instance variables - replace the example below with your own
-    private HashMap<Ingredient,Double> ingredient;
+    private HashMap<Ingredient,Double> ingredients;
     private ArrayList<String> instruction;
     private double portion;
     private String contents;
     private ArrayList<Integer> rating;
+    private boolean toDisplay = true;
 
     /**
      * Constructor for objects of class Recipe
      */
     public Recipe()
     {
-         ingredient = new HashMap<>();
+         ingredients = new HashMap<>();
          instruction = new ArrayList<>();
     }
     
     public void addIngredient(Ingredient i,double amount)
     {
-        ingredient.put(i,amount);
+        ingredients.put(i,amount);
     }
     public void addInstrution(String instruction)
     {
@@ -47,6 +48,7 @@ public class Recipe
     {
         portion = nbOfPortion;
     }
+    public void setToDisplay(boolean bool) { toDisplay = bool; }
     public void modifyInstruction(int stepNum,String instruction)
     {
         this.instruction.set(stepNum,instruction);
@@ -68,6 +70,8 @@ public class Recipe
     {
         return instruction.size();
     }
+    public boolean getToDisplay(){return toDisplay;}
+    
     
     public double getAverageRating()
     {
@@ -81,10 +85,10 @@ public class Recipe
     }
     public void listAllIngredients()
     {
-        System.out.println(ingredient.toString());
+        System.out.println(ingredients.toString());
     }
-    public Set getIngredient()
+    public Set<Ingredient> getIngredients()
     {
-        return ingredient.keySet();
+        return ingredients.keySet();
     }
 }

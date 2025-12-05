@@ -13,7 +13,7 @@ public class Ingredient
     private int sugar;
     private int protein;
     private HashMap<String,Integer> vitamins;
-    private Set<Tag> tag;
+    private Set<Tag> tags;
     private String name;
     public Unit unit;
 
@@ -37,9 +37,13 @@ public class Ingredient
     {
         vitamins.put(name, value);
     }
-    public void setTags(Tag tag)
+    public void addTags(Tag tag)
     {
-        this.tag.add(tag);
+        this.tags.add(tag);
+    }
+    public void removeTags(Tag tag)
+    {
+        this.tags.remove(tag);
     }
     
     public int getSugar()
@@ -56,6 +60,9 @@ public class Ingredient
     }
     public Set getTags()
     {
-        return tag;
+        return tags;
     }
+    
+
+    
 }

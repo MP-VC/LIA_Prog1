@@ -86,6 +86,15 @@ public class Controller
         return currentRecipe;
     }
     
+    public void newIngredient(String name, double quantity)
+    {
+        if (currentBook != null && currentRecipe != null) currentRecipe.addIngredient(new Ingredient(name), quantity);
+    }
+    public void selectIngredient(String name)
+    {
+        if (currentBooks != null && currentRecipe != null) currentIngredient = currentRecipe
+    }
+    
     /**
      * Calls addRecipe in the Book class.
      * 

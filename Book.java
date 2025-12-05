@@ -56,8 +56,13 @@ public class Book
         Collection<Recipe> filterCheck = recipes.values();
         for(Recipe rec : filterCheck)
         {
-            if(rec.getIngredient().contains(filter)){
-                return true;
+            for (Ingredient ing : rec.getIngredients())
+            {
+                if(ing.getTags().contains(filter)){
+                    rec.setToDisplay(true);
+                } else {
+                    rec.setToDisplay(false);
+                }
             }
         }
         return false;
