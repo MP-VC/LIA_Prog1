@@ -33,6 +33,10 @@ public class Ingredient
     {
         protein = amount;
     }
+    public void setUnit(Unit unit)
+    {
+        this.unit = unit;
+    }
     public void AddVitamin(String name, int value)
     {
         vitamins.put(name, value);
@@ -57,5 +61,9 @@ public class Ingredient
     public Set getTags()
     {
         return tag;
+    }
+    public Unit getUnit()
+    {
+        return unit;
     }
 }

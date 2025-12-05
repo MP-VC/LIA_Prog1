@@ -16,6 +16,7 @@ public class Book
     private HashMap<String,Recipe> recipes;
     private String author;
     private Date dayPublished;
+    private String bookTitle;
     /**
      * Constructor for objects of class Book
      */
@@ -26,6 +27,10 @@ public class Book
        recipes = new HashMap<>();
     }
     
+    public void setBookTitle(String bookTitle)
+    {
+        this.bookTitle = bookTitle;
+    }
     public HashMap<String, Recipe> getRecipes()
     {
         return recipes;
@@ -40,6 +45,7 @@ public class Book
        
     public void printBookDetails()
     {
+        System.out.println("Book: " + bookTitle);
         System.out.println("Author: " + author);
         System.out.println("Publish date: " + dayPublished);
     }
