@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.Collection;
+import java.util.Map;
 
 /**
  * Write a description of class Recipe here.
@@ -86,6 +87,11 @@ public class Recipe
     public void listAllIngredients()
     {
         System.out.println(ingredients.toString());
+        for(Map.Entry<Ingredient,Double> set : ingredient.entrySet())
+        {
+            System.out.println("Ingredient: "+set.getKey());
+            System.out.print(" " + set.getValue() + " " + set.getKey().getUnit().toString());
+        }
     }
     public Set<Ingredient> getIngredients()
     {

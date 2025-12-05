@@ -1,5 +1,5 @@
 import java.util.HashMap;
-
+import java.util.Map;
 /**
  * This is what the user interacts with.
  *
@@ -32,6 +32,7 @@ public class Controller
     public void newBook(String name, String author){
         Book b = new Book(author.toLowerCase());
         books.put(name.toLowerCase(), b);
+        b.setBookTitle(name);
     }
     
     /**
@@ -131,5 +132,28 @@ public class Controller
     {
         currentRecipe.addInstrution(instruction);
     }
-
+    
+    /**
+     * Lets the user add ingredients inside the current recipe
+     */
+    public void addIngredient(String food, Unit mesurementUnit, double amount)
+    {
+        Ingredient f = new Ingredient(food);
+        f.setUnit(mesurementUnit);
+        currentRecipe.addIngredient(f, amount);
+    }
+    /**
+     * Prints the whole selected book
+     */
+    public void printFullBook()
+    {
+        currentBook.printBookDetails();
+        for(Map.Entry<String,Recipe> a: currentBook.getRecipes().entrySet())
+        {
+            currentRecipe = a.getValue();
+            System.out.println(a.getKey().toString());
+            currentRecipe.listAllIngredients();
+            printInstruction();
+        }
+    }
 }
