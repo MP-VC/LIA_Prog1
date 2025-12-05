@@ -24,7 +24,8 @@ public class Recipe
      */
     public Recipe()
     {
-         ingredient = new HashMap<>();  
+         ingredient = new HashMap<>();
+         instruction = new ArrayList<>();
     }
     
     public void addIngredient(Ingredient i,double amount)
@@ -51,7 +52,7 @@ public class Recipe
         this.instruction.set(stepNum,instruction);
     }
     
-    public String getInstrution(int instructionNB)
+    public String getInstruction(int instructionNB)
     {
         return instruction.get(instructionNB);
     }
@@ -62,6 +63,10 @@ public class Recipe
     public double getNumberOfPortions()
     {
         return portion;
+    }
+    public int getInstructionSize()
+    {
+        return instruction.size();
     }
     
     public double getAverageRating()
@@ -76,7 +81,7 @@ public class Recipe
     }
     public void listAllIngredients()
     {
-        ingredient.toString();
+        System.out.println(ingredient.toString());
     }
     public Set getIngredient()
     {

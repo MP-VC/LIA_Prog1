@@ -75,7 +75,6 @@ public class Controller
     public Recipe selectRecipe(String recipeName)
     {
         if (currentBook != null){
-            recipeName = recipeName.toLowerCase();
             currentRecipe = currentBook.getRecipe(recipeName);
             return currentRecipe;
         }
@@ -102,4 +101,26 @@ public class Controller
         System.out.println("Please select a book.");
         return null;
     }
+    
+    /**
+     * Print the current recipes instructions
+     */
+    public void printInstruction()
+    {
+        int i = 0;
+        while(i<currentRecipe.getInstructionSize())
+        {
+            System.out.println(currentRecipe.getInstruction(i));
+            i++;
+        }
+    }
+    
+    /**
+     * Add instructions in the current recipe
+     */
+    public void addInstruction(String instruction)
+    {
+        currentRecipe.addInstrution(instruction);
+    }
+
 }
