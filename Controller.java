@@ -125,7 +125,7 @@ public class Controller
     }
     
     /**
-     * Lets the user addIngredients inside the recipe
+     * Lets the user add ingredients inside the current recipe
      */
     public void addIngredient(String food, Unit mesurementUnit, double amount)
     {

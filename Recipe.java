@@ -85,7 +85,7 @@ public class Recipe
         for(Map.Entry<Ingredient,Double> set : ingredient.entrySet())
         {
             System.out.println("Ingredient: "+set.getKey());
-            System.out.print(" " + set.getValue() + " "+ set.getKey().getUnit().toString());
+            System.out.print(" " + set.getValue() + " " + set.getKey().getUnit().toString());
         }
     }
     public Set getIngredient()

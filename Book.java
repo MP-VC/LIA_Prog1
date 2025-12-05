@@ -1,5 +1,5 @@
 import java.util.HashMap;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.Collection;
@@ -15,7 +15,7 @@ public class Book
 {
     private HashMap<String,Recipe> recipes;
     private String author;
-    private Date dayPublished;
+    private LocalDate dayPublished;
     private String bookTitle;
     /**
      * Constructor for objects of class Book
@@ -23,13 +23,17 @@ public class Book
     public Book(String author)
     {
        this.author = author;
-       dayPublished = new Date();
+       dayPublished = LocalDate.now();
        recipes = new HashMap<>();
     }
     
     public void setBookTitle(String bookTitle)
     {
         this.bookTitle = bookTitle;
+    }
+    public void setDate(int year, int month, int day)
+    {
+        dayPublished = dayPublished.of(year, month, day);
     }
     public HashMap<String, Recipe> getRecipes()
     {
