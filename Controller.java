@@ -93,7 +93,7 @@ public class Controller
     }
     public void selectIngredient(String name)
     {
-        if (currentBooks != null && currentRecipe != null) currentIngredient = currentRecipe
+        if (currentBooks != null && currentRecipe != null) currentIngredient = currentRecipe.getIngredient();
     }
     
     /**

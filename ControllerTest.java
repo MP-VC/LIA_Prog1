@@ -61,7 +61,7 @@ public class ControllerTest
     @Test
     public void filterByTagTest()
     {
-        c.newBook("100 Ice-Based Recipes for Weather when Temperature exceeds 35C", "Jake 'cold' F-rost");
+        c.newBook("100 Ice-Based Recipes for Weather when External Temperature exceeds 35C", "Jake 'cold' F-rost");
         c.selectBook("100 ice-based recipes for weather when temperature exceeds 35c");
         c.newRecipe("Ice-Flavoured Pie");
         c.selectRecipe("Ice-Flavoured Pie");
