@@ -20,7 +20,7 @@ public class Recipe
     private String contents;
     private ArrayList<Integer> rating;
     private boolean toDisplay = true;
-
+    private String type = "normal";
     /**
      * Constructor for objects of class Recipe
      */
@@ -28,6 +28,7 @@ public class Recipe
     {
         ingredient = new HashMap<>();
         instruction = new ArrayList<>();
+        rating = new ArrayList<>();
     }
 
     public void addIngredient(Ingredient i,double amount)
@@ -73,6 +74,11 @@ public class Recipe
     public int getRatingSize()
     {
         return rating.size();
+    }
+    
+    public String getType()
+    {
+        return type;
     }
 
     public double getNumberOfPortions()

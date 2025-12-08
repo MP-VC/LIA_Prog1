@@ -186,4 +186,23 @@ public class Controller
             printInstruction();
         }
     }
+    /**
+     * Print the book with the search
+     */
+    public void printSearchFullBook(String title,Ingredient ingredient, Tag tag)
+    {
+        int i = 0;
+        currentBook.printBookDetails();
+        for(Map.Entry<String,Recipe> a: currentBook.getRecipes().entrySet())
+        {
+            //Have to add tags
+            if(a.getKey().toString().equals(title)||currentRecipe.getIngredients().contains(ingredient))
+            {
+                    currentRecipe = a.getValue();
+                    System.out.println(a.getKey().toString() + " " + currentRecipe.getAverageRating() + " Stars");
+                    currentRecipe.listAllIngredients();
+                    printInstruction();
+            }
+        }
+    }
 }

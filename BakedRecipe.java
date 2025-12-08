@@ -14,7 +14,7 @@ public class BakedRecipe extends Recipe
     private double portion;
     private String contents;
     private ArrayList<Integer> rating;
-
+    private String type = "baked";
     /**
      * Constructor for objects of class BakedRecipe
      */

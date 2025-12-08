@@ -14,7 +14,7 @@ public class FrozenRecipe extends Recipe
     private double portion;
     private String contents;
     private ArrayList<Integer> rating;
-    
+    private String type = "frozen";
     /**
      * Constructor for objects of class FrozenRecipe
      */
