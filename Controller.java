@@ -93,7 +93,13 @@ public class Controller
     }
     public void selectIngredient(String name)
     {
-        if (currentBooks != null && currentRecipe != null) currentIngredient = currentRecipe.getIngredient();
+        if (currentBook != null && currentRecipe != null) 
+        {
+            for(Ingredient ingredient : currentRecipe.getIngredients())
+            {
+                    currentIngredient = ingredient.toString().toLowerCase().equals(name.toLowerCase()) ? ingredient : null;
+            }
+        }
     }
     
     /**
@@ -143,6 +149,30 @@ public class Controller
         currentRecipe.addIngredient(f, amount);
     }
     /**
+     * Prints the whole selected book while sorting by highest to lowest rating
+     */
+    public void printFullRatingSortBook()
+    {
+        int i = 0;
+        int max = 10;
+        currentBook.printBookDetails();
+        while(currentRecipe.getRatingSize()>i)
+        {
+            for(Map.Entry<String,Recipe> a: currentBook.getRecipes().entrySet())
+            {
+                if(currentRecipe.getAverageRating()==max)
+                {
+                    currentRecipe = a.getValue();
+                    System.out.println(a.getKey().toString() + " " + currentRecipe.getAverageRating() + " Stars");
+                    currentRecipe.listAllIngredients();
+                    printInstruction();
+                }
+            }
+            max--;
+        }
+    }
+    
+    /**
      * Prints the whole selected book
      */
     public void printFullBook()
@@ -151,7 +181,7 @@ public class Controller
         for(Map.Entry<String,Recipe> a: currentBook.getRecipes().entrySet())
         {
             currentRecipe = a.getValue();
-            System.out.println(a.getKey().toString());
+            System.out.println(a.getKey().toString() + " " + currentRecipe.getAverageRating() + " Stars");
             currentRecipe.listAllIngredients();
             printInstruction();
         }
