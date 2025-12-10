@@ -33,7 +33,7 @@ public class Controller
         System.out.println("3: Select a book");
         System.out.println("4: Select a recipe");
         System.out.println("5: List selected options");
-        System.out.println("6: List all books");
+        System.out.println("6: List book");
         int option = scanner.nextInt();
         switch(option)
         {
@@ -48,6 +48,24 @@ public class Controller
             case 5:
                 break;
             case 6:
+                System.out.println("Select a filter");
+                System.out.println("1: No filter");
+                System.out.println("2: Rating sort");
+                System.out.println("3: Name/ingredient/tag filter");
+                int filter = scanner.nextInt();
+                switch(filter)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        System.out.println("Please select a valid option");
+                        mainMenu();
+                        break; 
+                }
                 break;
             default:
                 System.out.println("Please select a valid option");
