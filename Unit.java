@@ -7,5 +7,5 @@
  */
 public enum Unit
 {
-    ML,L,G,KG,CUP,TSP,TBSP,OZ,LB,GAL
+    ML,L,G,KG,CUP,TSP,TBSP,OZ,LB,GAL,UNIT
 }

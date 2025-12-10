@@ -1,5 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
+
 /**
  * This is what the user interacts with.
  *
@@ -9,20 +11,51 @@ import java.util.Map;
  */
 public class Controller
 {
-    private HashMap<String,Book> books;
-    
-    private Book currentBook;
+    private static HashMap<String,Book> books = new HashMap<>();
+
+    private Book currentBook=null;
     private Recipe currentRecipe;
     private Ingredient currentIngredient;
     /**
      * Constructor for objects of class Controller
      */
-    public Controller()
+    public static void main(String[] args)
     {
-       books = new HashMap<>(); 
-       currentBook = null;
+        mainMenu();
     }
     
+    public static void mainMenu()
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please select an option");
+        System.out.println("1: Create a book");
+        System.out.println("2: Create a recipe");
+        System.out.println("3: Select a book");
+        System.out.println("4: Select a recipe");
+        System.out.println("5: List selected options");
+        System.out.println("6: List all books");
+        int option = scanner.nextInt();
+        switch(option)
+        {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            default:
+                System.out.println("Please select a valid option");
+                mainMenu();
+                break;
+        }
+    }
+
     /**
      * Creates a new recipe book.
      * 
@@ -34,7 +67,7 @@ public class Controller
         books.put(name.toLowerCase(), b);
         b.setBookTitle(name);
     }
-    
+
     /**
      * Returns a book by name.
      * 
@@ -47,7 +80,7 @@ public class Controller
         Book b = books.get(book);
         return b;
     }
-    
+
     /**
      * @return Returns the books HashMap. Which contains all books.
      */
@@ -55,7 +88,7 @@ public class Controller
     {
         return books;
     }
-    
+
     /**
      * Sets the specified book to the one the user is reading.
      * This allows us not to have the users specify the book every time.
@@ -68,11 +101,12 @@ public class Controller
         currentBook = books.get(bookName);
         return currentBook;
     }
+
     public Book getCurrentBook()
     {
         return currentBook;
     }
-    
+
     public Recipe selectRecipe(String recipeName)
     {
         if (currentBook != null){
@@ -82,26 +116,28 @@ public class Controller
         System.out.println("Please select a book.");
         return null;
     }
+
     public Recipe getCurrentRecipe()
     {
         return currentRecipe;
     }
-    
+
     public void newIngredient(String name, double quantity)
     {
         if (currentBook != null && currentRecipe != null) currentRecipe.addIngredient(new Ingredient(name), quantity);
     }
+
     public void selectIngredient(String name)
     {
         if (currentBook != null && currentRecipe != null) 
         {
             for(Ingredient ingredient : currentRecipe.getIngredients())
             {
-                    currentIngredient = ingredient.toString().toLowerCase().equals(name.toLowerCase()) ? ingredient : null;
+                currentIngredient = ingredient.toString().toLowerCase().equals(name.toLowerCase()) ? ingredient : null;
             }
         }
     }
-    
+
     /**
      * Calls addRecipe in the Book class.
      * 
@@ -117,7 +153,7 @@ public class Controller
         System.out.println("Please select a book.");
         return null;
     }
-    
+
     /**
      * Print the current recipes instructions
      */
@@ -130,7 +166,7 @@ public class Controller
             i++;
         }
     }
-    
+
     /**
      * Add instructions in the current recipe
      */
@@ -138,7 +174,7 @@ public class Controller
     {
         currentRecipe.addInstrution(instruction);
     }
-    
+
     /**
      * Lets the user add ingredients inside the current recipe
      */
@@ -148,6 +184,7 @@ public class Controller
         f.setUnit(mesurementUnit);
         currentRecipe.addIngredient(f, amount);
     }
+
     /**
      * Prints the whole selected book while sorting by highest to lowest rating
      */
@@ -171,7 +208,7 @@ public class Controller
             max--;
         }
     }
-    
+
     /**
      * Prints the whole selected book
      */
@@ -186,6 +223,7 @@ public class Controller
             printInstruction();
         }
     }
+
     /**
      * Print the book with the search
      */
@@ -195,13 +233,12 @@ public class Controller
         currentBook.printBookDetails();
         for(Map.Entry<String,Recipe> a: currentBook.getRecipes().entrySet())
         {
-            //Have to add tags
-            if(a.getKey().toString().equals(title)||currentRecipe.getIngredients().contains(ingredient))
+            if(a.getKey().toString().equals(title)||currentRecipe.getIngredients().contains(ingredient)||tag.equals(currentRecipe.getAllTag()))
             {
-                    currentRecipe = a.getValue();
-                    System.out.println(a.getKey().toString() + " " + currentRecipe.getAverageRating() + " Stars");
-                    currentRecipe.listAllIngredients();
-                    printInstruction();
+                currentRecipe = a.getValue();
+                System.out.println(a.getKey().toString() + " " + currentRecipe.getAverageRating() + " Stars");
+                currentRecipe.listAllIngredients();
+                printInstruction();
             }
         }
     }
