@@ -14,7 +14,7 @@ public class Controller
 {
     private static HashMap<String,Book> books = new HashMap<>();
 
-    private Book currentBook=null;
+    private Book currentBook;
     private Recipe currentRecipe;
     private Ingredient currentIngredient;
     /**
@@ -189,8 +189,12 @@ public class Controller
     
     public void printAllBooks()
     {
-        Set bookSet = books.keySet();
-        for (String s : )
+        Set<String> bookSet = books.keySet();
+        int i = 1;
+        for (String s : bookSet){
+            System.out.println("" + i + ". " + s + " by " + books.get(s).getAuthor());
+            i++;
+        }
     }
     
     /**
