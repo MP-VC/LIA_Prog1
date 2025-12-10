@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.Collection;
 import java.util.Map;
+import java.util.HashSet;
 
 /**
  * Write a description of class Recipe here.
@@ -121,5 +122,15 @@ public class Recipe
     public Set<Ingredient> getIngredients()
     {
         return ingredient.keySet();
+    }
+    
+    public Set<Tag> getAllTag()
+    {
+        HashSet<Tag> all = new HashSet<>();
+        for(Map.Entry<Ingredient,Double> set : ingredient.entrySet())
+        {
+            all.addAll(set.getKey().getTags());
+        }
+        return all;
     }
 }
