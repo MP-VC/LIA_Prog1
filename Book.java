@@ -27,6 +27,15 @@ public class Book
        recipes = new HashMap<>();
     }
     
+    public String getAuthor()
+    {
+        return author;
+    }
+    public String getTitle()
+    {
+        return bookTitle;
+    }
+    
     public void setBookTitle(String bookTitle)
     {
         this.bookTitle = bookTitle;

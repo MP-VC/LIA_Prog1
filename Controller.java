@@ -1,5 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+
 /**
  * This is what the user interacts with.
  *
@@ -131,6 +133,12 @@ public class Controller
         }
     }
     
+    public void printAllBooks()
+    {
+        Set bookSet = books.keySet();
+        for (String s : )
+    }
+    
     /**
      * Add instructions in the current recipe
      */
@@ -177,13 +185,17 @@ public class Controller
      */
     public void printFullBook()
     {
-        currentBook.printBookDetails();
-        for(Map.Entry<String,Recipe> a: currentBook.getRecipes().entrySet())
-        {
-            currentRecipe = a.getValue();
-            System.out.println(a.getKey().toString() + " " + currentRecipe.getAverageRating() + " Stars");
-            currentRecipe.listAllIngredients();
-            printInstruction();
+        if (currentBook != null){
+            currentBook.printBookDetails();
+            for(Map.Entry<String,Recipe> a: currentBook.getRecipes().entrySet())
+            {
+                currentRecipe = a.getValue();
+                System.out.println(a.getKey().toString() + " " + currentRecipe.getAverageRating() + " Stars");
+                currentRecipe.listAllIngredients();
+                printInstruction();
+            }
+        } else{
+            System.out.println("No book selected!");
         }
     }
     /**

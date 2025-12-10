@@ -113,7 +113,7 @@ public class Recipe
         System.out.println(ingredient.toString());
         for(Map.Entry<Ingredient,Double> set : ingredient.entrySet())
         {
-            System.out.println("Ingredient: "+set.getKey());
+            System.out.println("Ingredient: "+set.getKey().toString());
             System.out.print(" " + set.getValue() + " " + set.getKey().getUnit().toString());
         }
     }
