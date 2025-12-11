@@ -13,8 +13,8 @@ import java.util.Scanner;
 public class Controller
 {
     private static HashMap<String,Book> books = new HashMap<>();
-
-    private Book currentBook;
+    private static boolean running = true;
+    private static Book currentBook;
     private Recipe currentRecipe;
     private Ingredient currentIngredient;
     /**
@@ -24,55 +24,80 @@ public class Controller
     {
         mainMenu();
     }
-    
+
     public static void mainMenu()
     {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please select an option");
-        System.out.println("1: Create a book");
-        System.out.println("2: Create a recipe");
-        System.out.println("3: Select a book");
-        System.out.println("4: Select a recipe");
-        System.out.println("5: List selected options");
-        System.out.println("6: List book");
-        int option = scanner.nextInt();
-        switch(option)
+        while(running)
         {
-            case 1:
-                System.out.println("Specify Title and Author: /t ex: TITLE AUTHOR");
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                System.out.println("Select a filter");
-                System.out.println("1: No filter");
-                System.out.println("2: Rating sort");
-                System.out.println("3: Name/ingredient/tag filter");
-                int filter = scanner.nextInt();
-                switch(filter)
-                {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    default:
-                        System.out.println("Please select a valid option");
-                        mainMenu();
-                        break; 
-                }
-                break;
-            default:
-                System.out.println("Please select a valid option");
-                mainMenu();
-                break;
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Please select an option");
+            System.out.println("1: Create a book");
+            System.out.println("2: Create a recipe");
+            System.out.println("3: Select a book");
+            System.out.println("4: Select a recipe");
+            System.out.println("5: List selected options");
+            System.out.println("6: List book");
+            System.out.println("0: Quit");
+            int option = scanner.nextInt();
+            switch(option)
+            {
+                case 1:
+                    //Create a book
+                    System.out.println("Specify Title and Author");
+                    System.out.println("Title:");
+                    String title = scanner.next();
+                    System.out.println("Author:");
+                    String author = scanner.next();
+                    newBook(title,author);
+                    System.out.println("New book titled " + title +" by " + author + " has made created");
+                    mainMenu();
+                    break;
+                case 2:
+                    //Create a recipe
+                    break;
+                case 3:
+                    //Select a book
+                    System.out.println("Input the title of the book");
+                    String title2 = scanner.next();
+                    currentBook = books.get(title2);
+                    break;
+                case 4:
+                    //Select a recipe
+                    break;
+                case 5:
+                    //List selected options
+                    break;
+                case 6:
+                    //List book
+                    System.out.println("Select a filter");
+                    System.out.println("1: No filter");
+                    System.out.println("2: Rating sort");
+                    System.out.println("3: Name/ingredient/tag filter");
+                    int filter = scanner.nextInt();
+                    switch(filter)
+                    {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        default:
+                            System.out.println("Please select a valid option");
+                            mainMenu();
+                            break; 
+                    }
+                    break;
+                case 0:
+                    //Quit
+                    System.out.println("Ending program");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Please select a valid option");
+                    mainMenu();
+                    break;
+            }
         }
     }
 
@@ -82,7 +107,7 @@ public class Controller
      * @param name The name of the book
      * @param author The author's name
      */
-    public void newBook(String name, String author){
+    public static void newBook(String name, String author){
         Book b = new Book(author.toLowerCase());
         books.put(name.toLowerCase(), b);
         b.setBookTitle(name);
@@ -186,7 +211,7 @@ public class Controller
             i++;
         }
     }
-    
+
     public void printAllBooks()
     {
         Set<String> bookSet = books.keySet();
@@ -196,7 +221,7 @@ public class Controller
             i++;
         }
     }
-    
+
     /**
      * Add instructions in the current recipe
      */
