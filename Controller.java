@@ -17,6 +17,7 @@ public class Controller
     private static Book currentBook;
     private static Recipe currentRecipe;
     private static Ingredient currentIngredient;
+    private static int portions= 1;
     /**
      * Constructor for objects of class Controller
      */
@@ -37,6 +38,8 @@ public class Controller
             System.out.println("4: Select a recipe");
             System.out.println("5: List selected options");
             System.out.println("6: List book");
+            System.out.println("7: Add rating to selected recipe");
+            System.out.println("8: Set portions");
             System.out.println("0: Quit");
             int option = scanner.nextInt();
             switch(option)
@@ -121,6 +124,43 @@ public class Controller
                         System.out.println("No book selected!");
                         break;
                     }
+                case 7:
+                    //add rating
+                    if (currentBook == null) {
+                        System.out.println("Please select a book first");
+                        break;
+                    }
+
+                    if (currentRecipe == null) {
+                        System.out.println("Please select a recipe first");
+                        break;
+                    }
+
+                    System.out.println("Enter rating (1 - 10):");
+                    int rating = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if (rating < 1 || rating > 10) {
+                        System.out.println("Rating must be between 1 and 10");
+                    } else {
+                        currentRecipe.addRating(rating);
+                        System.out.println("Rating added. Current average: " + currentRecipe.getAverageRating());
+                    }
+                    break;
+                case 8:
+                    //set portions
+                    System.out.println("Enter number of portions:");
+                    int newPortions = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if (newPortions <= 0) {
+                        System.out.println("Portions must be greater than 0");
+                    } else {
+                        portions = newPortions;
+                        System.out.println("Portions set to " + portions);
+                    }
+                    break;
+
                 case 0:
                     //Quit
                     System.out.println("Ending program");
