@@ -15,8 +15,8 @@ public class Controller
     private static HashMap<String,Book> books = new HashMap<>();
     private static boolean running = true;
     private static Book currentBook;
-    private Recipe currentRecipe;
-    private Ingredient currentIngredient;
+    private static Recipe currentRecipe;
+    private static Ingredient currentIngredient;
     /**
      * Constructor for objects of class Controller
      */
@@ -25,7 +25,7 @@ public class Controller
         mainMenu();
     }
 
-    public static void mainMenu()
+    private static void mainMenu()
     {
         while(running)
         {
@@ -54,6 +54,14 @@ public class Controller
                     break;
                 case 2:
                     //Create a recipe
+                    if (currentBook == null) {
+                        System.out.println("Please select a book first!");
+                        break;
+                    }
+                    System.out.println("Enter recipe name:");
+                    String recipeName = scanner.nextLine();
+                    currentRecipe = currentBook.addRecipe(recipeName.toLowerCase());
+                    System.out.println("Recipe created!");
                     break;
                 case 3:
                     //Select a book
@@ -63,31 +71,56 @@ public class Controller
                     break;
                 case 4:
                     //Select a recipe
+                    if (currentBook == null) {
+                        System.out.println("Please select a book first!");
+                        break;
+                    }
+                    System.out.println("Enter recipe name:");
+                    String recipeSelect = scanner.nextLine();
+                    currentRecipe = currentBook.getRecipe(recipeSelect);
+                    if (currentRecipe == null) {
+                        System.out.println("Recipe not found!");
+                    } else {
+                        System.out.println("Recipe selected!");
+                    }
                     break;
                 case 5:
                     //List selected options
+                    System.out.println("Current selections:");
+                    System.out.println("Book: " + (currentBook != null ? currentBook.getTitle() : "None"));
+                    System.out.println("Recipe: " + (currentRecipe != null ? "Selected" : "None"));
                     break;
                 case 6:
                     //List book
-                    System.out.println("Select a filter");
-                    System.out.println("1: No filter");
-                    System.out.println("2: Rating sort");
-                    System.out.println("3: Name/ingredient/tag filter");
-                    int filter = scanner.nextInt();
-                    switch(filter)
+                    if(currentBook !=null)
                     {
-                        case 1:
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        default:
-                            System.out.println("Please select a valid option");
-                            mainMenu();
-                            break; 
+                        System.out.println("Select a filter");
+                        System.out.println("1: No filter");
+                        System.out.println("2: Rating sort");
+                        System.out.println("3: Name/ingredient/tag filter");
+                        int filter = scanner.nextInt();
+                        switch(filter)
+                        {
+                            case 1:
+                                printFullBook();
+                                break;
+                            case 2:
+                                printFullRatingSortBook();
+                                break;
+                            case 3:
+                                break;
+                            default:
+                                System.out.println("Please select a valid option");
+                                mainMenu();
+                                break; 
+                        }
+                        break;
                     }
-                    break;
+                    else
+                    {
+                        System.out.println("No book selected!");
+                        break;
+                    }
                 case 0:
                     //Quit
                     System.out.println("Ending program");
@@ -107,7 +140,7 @@ public class Controller
      * @param name The name of the book
      * @param author The author's name
      */
-    public static void newBook(String name, String author){
+    private static void newBook(String name, String author){
         Book b = new Book(author.toLowerCase());
         books.put(name.toLowerCase(), b);
         b.setBookTitle(name);
@@ -119,7 +152,7 @@ public class Controller
      * @param book The name of the book.
      * @return The book paired with the specified name in the books HashMap.
      */
-    public Book getBook(String book)
+    private static Book getBook(String book)
     {
         book = book.toLowerCase();
         Book b = books.get(book);
@@ -129,7 +162,7 @@ public class Controller
     /**
      * @return Returns the books HashMap. Which contains all books.
      */
-    public HashMap<String, Book> getBooks()
+    private static HashMap<String, Book> getBooks()
     {
         return books;
     }
@@ -140,19 +173,19 @@ public class Controller
      * 
      * @param bookName The name of the book. The key for the books HashMap.
      */
-    public Book selectBook(String bookName)
+    private static Book selectBook(String bookName)
     {
         bookName = bookName.toLowerCase();
         currentBook = books.get(bookName);
         return currentBook;
     }
 
-    public Book getCurrentBook()
+    private static Book getCurrentBook()
     {
         return currentBook;
     }
 
-    public Recipe selectRecipe(String recipeName)
+    private static Recipe selectRecipe(String recipeName)
     {
         if (currentBook != null){
             currentRecipe = currentBook.getRecipe(recipeName);
@@ -162,17 +195,17 @@ public class Controller
         return null;
     }
 
-    public Recipe getCurrentRecipe()
+    private static Recipe getCurrentRecipe()
     {
         return currentRecipe;
     }
 
-    public void newIngredient(String name, double quantity)
+    private static void newIngredient(String name, double quantity)
     {
         if (currentBook != null && currentRecipe != null) currentRecipe.addIngredient(new Ingredient(name), quantity);
     }
 
-    public void selectIngredient(String name)
+    private static void selectIngredient(String name)
     {
         if (currentBook != null && currentRecipe != null) 
         {
@@ -189,7 +222,7 @@ public class Controller
      * @param name The name of the recipe. Used as the key in the Book.recipes HashMap.
      * @return Returns the new recipe. Returns null if no book has been selected.
      */
-    public Recipe newRecipe(String name)
+    private static Recipe newRecipe(String name)
     {
         if(currentBook != null){
             name = name.toLowerCase();
@@ -202,7 +235,7 @@ public class Controller
     /**
      * Print the current recipes instructions
      */
-    public void printInstruction()
+    private static void printInstruction()
     {
         int i = 0;
         while(i<currentRecipe.getInstructionSize())
@@ -212,7 +245,7 @@ public class Controller
         }
     }
 
-    public void printAllBooks()
+    private static void printAllBooks()
     {
         Set<String> bookSet = books.keySet();
         int i = 1;
@@ -225,7 +258,7 @@ public class Controller
     /**
      * Add instructions in the current recipe
      */
-    public void addInstruction(String instruction)
+    private static void addInstruction(String instruction)
     {
         currentRecipe.addInstrution(instruction);
     }
@@ -233,7 +266,7 @@ public class Controller
     /**
      * Lets the user add ingredients inside the current recipe
      */
-    public void addIngredient(String food, Unit mesurementUnit, double amount)
+    private static void addIngredient(String food, Unit mesurementUnit, double amount)
     {
         Ingredient f = new Ingredient(food);
         f.setUnit(mesurementUnit);
@@ -243,7 +276,7 @@ public class Controller
     /**
      * Prints the whole selected book while sorting by highest to lowest rating
      */
-    public void printFullRatingSortBook()
+    private static void printFullRatingSortBook()
     {
         int i = 0;
         int max = 10;
@@ -267,7 +300,7 @@ public class Controller
     /**
      * Prints the whole selected book
      */
-    public void printFullBook()
+    private static void printFullBook()
     {
         if (currentBook != null){
             currentBook.printBookDetails();
@@ -286,7 +319,7 @@ public class Controller
     /**
      * Print the book with the search
      */
-    public void printSearchFullBook(String title,Ingredient ingredient, Tag tag)
+    private static void printSearchFullBook(String title,Ingredient ingredient, Tag tag)
     {
         int i = 0;
         currentBook.printBookDetails();
