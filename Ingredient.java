@@ -25,6 +25,10 @@ public class Ingredient
         this.name = name;
     }
     
+    public String getName()
+    {
+        return name;
+    }
     public void setSugar(int amount)
     {
         sugar = amount;

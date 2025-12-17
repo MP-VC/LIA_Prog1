@@ -23,6 +23,7 @@ public class Controller
      */
     public static void main(String[] args)
     {
+        loadPreset();
         mainMenu();
     }
 
@@ -40,6 +41,7 @@ public class Controller
             System.out.println("6: List book");
             System.out.println("7: Add rating to selected recipe");
             System.out.println("8: Set portions");
+            System.out.println("9: Modify selected recipe");
             System.out.println("0: Quit");
             int option = scanner.nextInt();
             switch(option)
@@ -62,7 +64,7 @@ public class Controller
                         break;
                     }
                     System.out.println("Enter recipe name:");
-                    String recipeName = scanner.nextLine();
+                    String recipeName = scanner.next();
                     currentRecipe = currentBook.addRecipe(recipeName.toLowerCase());
                     System.out.println("Recipe created!");
                     break;
@@ -79,7 +81,7 @@ public class Controller
                         break;
                     }
                     System.out.println("Enter recipe name:");
-                    String recipeSelect = scanner.nextLine();
+                    String recipeSelect = scanner.next();
                     currentRecipe = currentBook.getRecipe(recipeSelect);
                     if (currentRecipe == null) {
                         System.out.println("Recipe not found!");
@@ -95,34 +97,44 @@ public class Controller
                     break;
                 case 6:
                     //List book
-                    if(currentBook !=null)
+                    System.out.println("Select an option");
+                    System.out.println("1: No filter");
+                    System.out.println("2: Rating sort");
+                    System.out.println("3: Name/ingredient/tag filter");
+                    System.out.println("4: List all books");
+                    int filter = scanner.nextInt();
+                    switch(filter)
                     {
-                        System.out.println("Select a filter");
-                        System.out.println("1: No filter");
-                        System.out.println("2: Rating sort");
-                        System.out.println("3: Name/ingredient/tag filter");
-                        int filter = scanner.nextInt();
-                        switch(filter)
-                        {
-                            case 1:
+
+                        case 1:
+                            if(currentBook!=null){
                                 printFullBook();
-                                break;
-                            case 2:
+                            }
+                            else{System.out.println("Please select a book first");}
+                            break;
+                        case 2:
+                            if(currentBook!=null){
                                 printFullRatingSortBook();
+                            }
+                            else{System.out.println("Please select a book first");}
+                            break;
+                        case 3:
+                            if(currentBook!=null){
                                 break;
-                            case 3:
-                                break;
-                            default:
-                                System.out.println("Please select a valid option");
-                                mainMenu();
-                                break; 
-                        }
-                        break;
-                    }
-                    else
-                    {
-                        System.out.println("No book selected!");
-                        break;
+                            }
+                            else{System.out.println("Please select a book first");}
+
+                        case 4:
+                            Set<String> boo = books.keySet();
+                            for(String b : boo)
+                            {
+                                System.out.println(b);
+                            }
+                            break;
+                        default:
+                            System.out.println("Please select a valid option");
+                            mainMenu();
+                            break; 
                     }
                 case 7:
                     //add rating
@@ -159,6 +171,57 @@ public class Controller
                         portions = newPortions;
                         System.out.println("Portions set to " + portions);
                     }
+                    break;
+                case 9:
+                    if (currentRecipe == null) {
+                        System.out.println("Please select a recipe first!");
+                        break;
+                    }
+
+                    System.out.println("Modifying recipe: " + currentRecipe.toString());
+                    System.out.println("Enter ingredients first");
+                    System.out.println("Type 'done' when finished adding ingredients");
+
+                    while (true) {
+                        System.out.println("Ingredient name:");
+                        String ingredientName = scanner.next();
+
+                        if (ingredientName.equalsIgnoreCase("done")) {
+                            break;
+                        }
+
+                        System.out.println("Quantity:");
+                        double quantity = scanner.nextDouble();
+                        scanner.next();
+
+                        System.out.println("Unit (ex: GRAM, ML, CUP):");
+                        String unitInput = scanner.next();
+
+                        Unit unit = Unit.valueOf(unitInput.toUpperCase());
+                        Ingredient ingredient = new Ingredient(ingredientName);
+                        ingredient.setUnit(unit);
+                        currentRecipe.addIngredient(ingredient, quantity);
+                        System.out.println("Ingredient added!");
+
+                        System.out.println("Invalid unit! Ingredient skipped!");
+                    }
+
+                    System.out.println("Now add instructions");
+                    System.out.println("Type 'done' when finished adding instructions");
+
+                    while (true) {
+                        System.out.println("Instruction:");
+                        String instruction = scanner.next();
+
+                        if (instruction.equalsIgnoreCase("done")) {
+                            break;
+                        }
+
+                        currentRecipe.addInstrution(instruction);
+                        System.out.println("Instruction added!");
+                    }
+
+                    System.out.println("Recipe modification complete!");
                     break;
 
                 case 0:
@@ -280,7 +343,7 @@ public class Controller
         int i = 0;
         while(i<currentRecipe.getInstructionSize())
         {
-            System.out.println(currentRecipe.getInstruction(i));
+            System.out.println((i+1)+". "+currentRecipe.getInstruction(i));
             i++;
         }
     }
@@ -344,11 +407,13 @@ public class Controller
     {
         if (currentBook != null){
             currentBook.printBookDetails();
+            System.out.println();
             for(Map.Entry<String,Recipe> a: currentBook.getRecipes().entrySet())
             {
                 currentRecipe = a.getValue();
                 System.out.println(a.getKey().toString() + " " + currentRecipe.getAverageRating() + " Stars");
                 currentRecipe.listAllIngredients();
+                System.out.println();
                 printInstruction();
             }
         } else{
@@ -374,4 +439,39 @@ public class Controller
             }
         }
     }
+
+    private static void loadPreset()
+    {
+        // Create book
+        Book book = new Book("Evil_book");
+        book.setBookTitle("Evil_book");
+        books.put("Evil_book", book);
+
+        // Create recipe
+        Recipe recipe = book.addRecipe("Malice");
+
+        // Ingredients
+        Ingredient sin = new Ingredient("Sin");
+        sin.setUnit(Unit.CUP);
+        recipe.addIngredient(sin, 1.5);
+
+        Ingredient hate = new Ingredient("Hate");
+        hate.setUnit(Unit.CUP);
+        recipe.addIngredient(hate, 1.25);
+
+        Ingredient corruption = new Ingredient("Corruption");
+        corruption.setUnit(Unit.UNIT);
+        recipe.addIngredient(corruption, 1);
+
+        // Instructions
+        recipe.addInstrution("Mix all ingredients together");
+        recipe.addInstrution("Burn the mixture in purgatory");
+        recipe.addInstrution("Absorb");
+
+        // Ratings
+        recipe.addRating(9);
+        recipe.addRating(10);
+        recipe.addRating(8);
+    }
+
 }
