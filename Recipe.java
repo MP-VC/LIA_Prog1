@@ -109,12 +109,12 @@ public class Recipe
         return (int)Math.round(sum/(double)rating.size());
     }
 
-    public void listAllIngredients()
+    public void listAllIngredients(double portions)
     {
         for(Map.Entry<Ingredient,Double> set : ingredient.entrySet())
         {
             System.out.println("Ingredient: "+set.getKey().getName()+
-            " " + set.getValue() + 
+            " " + (set.getValue()*portions) + 
             " " + set.getKey().getUnit().toString());
         }
     }

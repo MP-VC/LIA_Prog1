@@ -17,7 +17,7 @@ public class Controller
     private static Book currentBook;
     private static Recipe currentRecipe;
     private static Ingredient currentIngredient;
-    private static int portions= 1;
+    private static double portions = 1;
     /**
      * Constructor for objects of class Controller
      */
@@ -120,22 +120,53 @@ public class Controller
                             break;
                         case 3:
                             if(currentBook!=null){
-                                break;
+                                String title3 = null;
+                                Ingredient ingredient = null;
+                                Tag tag = null;
+                                
+                                System.out.println("Search by:");
+                                System.out.println("1: Recipe title");
+                                System.out.println("2: Ingredient");
+                                System.out.println("3: Tag");
+
+                                int searchChoice = scanner.nextInt();
+
+                                switch (searchChoice)
+                                {
+                                    case 1:
+                                        System.out.println("Enter recipe title:");
+                                        title3 = scanner.next();
+                                        break;
+
+                                    case 2:
+                                        System.out.println("Enter ingredient name:");
+                                        String ingredientName = scanner.next();
+                                        ingredient = new Ingredient(ingredientName);
+                                        break;
+
+                                    case 3:
+                                        System.out.println("Enter tag:");
+                                        String tagInput = scanner.next();
+                                        tag = Tag.valueOf(tagInput.toUpperCase());
+                                        break;
+
+                                    default:
+                                        System.out.println("Invalid search option!");
+                                        break;
+                                }
+                                printSearchFullBook(title3,ingredient,tag);
                             }
                             else{System.out.println("Please select a book first");}
-
+                            break;
                         case 4:
-                            Set<String> boo = books.keySet();
-                            for(String b : boo)
-                            {
-                                System.out.println(b);
-                            }
+                            printAllBooks();
                             break;
                         default:
                             System.out.println("Please select a valid option");
                             mainMenu();
                             break; 
                     }
+                    break;
                 case 7:
                     //add rating
                     if (currentBook == null) {
@@ -392,7 +423,7 @@ public class Controller
                 {
                     currentRecipe = a.getValue();
                     System.out.println(a.getKey().toString() + " " + currentRecipe.getAverageRating() + " Stars");
-                    currentRecipe.listAllIngredients();
+                    currentRecipe.listAllIngredients(portions);
                     printInstruction();
                 }
             }
@@ -412,7 +443,7 @@ public class Controller
             {
                 currentRecipe = a.getValue();
                 System.out.println(a.getKey().toString() + " " + currentRecipe.getAverageRating() + " Stars");
-                currentRecipe.listAllIngredients();
+                currentRecipe.listAllIngredients(portions);
                 System.out.println();
                 printInstruction();
             }
@@ -434,7 +465,7 @@ public class Controller
             {
                 currentRecipe = a.getValue();
                 System.out.println(a.getKey().toString() + " " + currentRecipe.getAverageRating() + " Stars");
-                currentRecipe.listAllIngredients();
+                currentRecipe.listAllIngredients(portions);
                 printInstruction();
             }
         }
@@ -443,7 +474,7 @@ public class Controller
     private static void loadPreset()
     {
         // Create book
-        Book book = new Book("Evil_book");
+        Book book = new Book("John Neerdowell");
         book.setBookTitle("Evil_book");
         books.put("Evil_book", book);
 
@@ -451,17 +482,17 @@ public class Controller
         Recipe recipe = book.addRecipe("Malice");
 
         // Ingredients
-        Ingredient sin = new Ingredient("Sin");
-        sin.setUnit(Unit.CUP);
-        recipe.addIngredient(sin, 1.5);
+        Ingredient ingredient = new Ingredient("Sin");
+        ingredient.setUnit(Unit.CUP);
+        recipe.addIngredient(ingredient, 1.5);
 
-        Ingredient hate = new Ingredient("Hate");
-        hate.setUnit(Unit.CUP);
-        recipe.addIngredient(hate, 1.25);
+        Ingredient ingredient2 = new Ingredient("Hate");
+        ingredient2.setUnit(Unit.CUP);
+        recipe.addIngredient(ingredient2, 1.25);
 
-        Ingredient corruption = new Ingredient("Corruption");
-        corruption.setUnit(Unit.UNIT);
-        recipe.addIngredient(corruption, 1);
+        Ingredient ingredient3 = new Ingredient("Corruption");
+        ingredient3.setUnit(Unit.UNIT);
+        recipe.addIngredient(ingredient3, 1);
 
         // Instructions
         recipe.addInstrution("Mix all ingredients together");
@@ -472,6 +503,39 @@ public class Controller
         recipe.addRating(9);
         recipe.addRating(10);
         recipe.addRating(8);
+        
+        // Second Book
+        
+        // Create book
+        book = new Book("Saint Doe");
+        book.setBookTitle("Good_book");
+        books.put("Good_book", book);
+
+        // Create recipe
+        Recipe recipe2 = book.addRecipe("Benevolence");
+
+        // Ingredients
+        ingredient = new Ingredient("Virtue");
+        ingredient.setUnit(Unit.CUP);
+        recipe2.addIngredient(ingredient, 1.5);
+
+        ingredient2 = new Ingredient("Love");
+        ingredient2.setUnit(Unit.CUP);
+        recipe2.addIngredient(ingredient2, 1.25);
+
+        ingredient3 = new Ingredient("Justice");
+        ingredient3.setUnit(Unit.UNIT);
+        recipe2.addIngredient(ingredient3, 1);
+
+        // Instructions
+        recipe2.addInstrution("Mix all ingredients together");
+        recipe2.addInstrution("Show it the wonders of life");
+        recipe2.addInstrution("Share it to all");
+
+        // Ratings
+        recipe2.addRating(1);
+        recipe2.addRating(4);
+        recipe2.addRating(3);
     }
 
 }
