@@ -2,10 +2,11 @@ import java.util.HashMap;
 import java.util.Set;
 
 /**
- * Write a description of class Ingredients here.
+ * The ingredient values
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author MP-VC
+ * @author R3dJ4y55
+ * @version 1
  */
 public class Ingredient
 {

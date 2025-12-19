@@ -1,9 +1,9 @@
 
 /**
- * Enumeration class Tags - write a description of the enum class here
+ * Possible tags the recipe could have
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author MP-VC
+ * @version 1
  */
 public enum Tag
 {

@@ -204,6 +204,7 @@ public class Controller
                     }
                     break;
                 case 9:
+                    //modify selected recipe
                     if (currentRecipe == null) {
                         System.out.println("Please select a recipe first!");
                         break;
@@ -319,6 +320,12 @@ public class Controller
         return currentBook;
     }
 
+    /**
+     * Sets the specified recipe to the one the user is reading.
+     * This allows us not to have the users specify the recipe every time.
+     * 
+     * @param recipeName The name of the recipe.
+     */
     private static Recipe selectRecipe(String recipeName)
     {
         if (currentBook != null){
@@ -332,11 +339,6 @@ public class Controller
     private static Recipe getCurrentRecipe()
     {
         return currentRecipe;
-    }
-
-    private static void newIngredient(String name, double quantity)
-    {
-        if (currentBook != null && currentRecipe != null) currentRecipe.addIngredient(new Ingredient(name), quantity);
     }
 
     private static void selectIngredient(String name)
@@ -390,24 +392,6 @@ public class Controller
     }
 
     /**
-     * Add instructions in the current recipe
-     */
-    private static void addInstruction(String instruction)
-    {
-        currentRecipe.addInstrution(instruction);
-    }
-
-    /**
-     * Lets the user add ingredients inside the current recipe
-     */
-    private static void addIngredient(String food, Unit mesurementUnit, double amount)
-    {
-        Ingredient f = new Ingredient(food);
-        f.setUnit(mesurementUnit);
-        currentRecipe.addIngredient(f, amount);
-    }
-
-    /**
      * Prints the whole selected book while sorting by highest to lowest rating
      */
     private static void printFullRatingSortBook()
@@ -454,6 +438,10 @@ public class Controller
 
     /**
      * Print the book with the search
+     * 
+     * @param title The title the user wants to search
+     * @param ingredient The ingredient the recipe should include
+     * @param tag The tag the recipe should have
      */
     private static void printSearchFullBook(String title,Ingredient ingredient, Tag tag)
     {
@@ -470,7 +458,10 @@ public class Controller
             }
         }
     }
-
+    
+    /**
+     * Creates premade books
+     */
     private static void loadPreset()
     {
         // Create book
@@ -537,5 +528,4 @@ public class Controller
         recipe2.addRating(4);
         recipe2.addRating(3);
     }
-
 }

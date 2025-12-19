@@ -7,14 +7,14 @@ import java.util.Map;
 import java.util.HashSet;
 
 /**
- * Write a description of class Recipe here.
+ * The recipe commands
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author MP-VC
+ * @author R3dJ4y55
+ * @version 1
  */
 public class Recipe
 {
-    // instance variables - replace the example below with your own
     private HashMap<Ingredient,Double> ingredient;
     private ArrayList<String> instruction;
     private double portion;

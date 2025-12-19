@@ -1,9 +1,9 @@
 
 /**
- * Enumeration class Quantity - write a description of the enum class here
+ * The mesurement unit the ingredient has
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author MP-VC
+ * @version 1
  */
 public enum Unit
 {
