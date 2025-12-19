@@ -1,16 +1,7 @@
-------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all they need to know. The comments should usually include at least:
-------------------------------------------------------------------------
+PROJECT TITLE: Recipe book
+VERSION: 1
+AUTHORS: MP-VC,R3dJ4y55
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PREREQUISITE: Make sure you have java installed
 
-
-How to run outside BlueJ:
-TBD
+HOW TO EXECUTE: Run the batch file called Executer.bat OR Execute "java Controller" in the terminal
